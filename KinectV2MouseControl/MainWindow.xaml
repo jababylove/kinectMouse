@@ -1,28 +1,54 @@
 ﻿<Window x:Class="KinectV2MouseControl.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Kinect v2 Mouse Control" Height="392.197" Width="458.276" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="UAH Smart TV Control" Height="392.197" Width="458.276" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
-        <Grid KeyDown="txtMouseSensitivity_KeyDown" Margin="0,0,0.5,-0.5">
-            <Slider x:Name="MouseSensitivity" Margin="10,40,9.5,0" VerticalAlignment="Top" Height="26" Maximum="6" ValueChanged="MouseSensitivity_ValueChanged" Minimum="1" Value="3.5"/>
-            <Label Content="Mouse Sensitivity" Margin="10,10,117.5,0" VerticalAlignment="Top"/>
-            <Slider x:Name="PauseToClickTime" Margin="10,111,9.5,0" VerticalAlignment="Top" Height="26" Maximum="5" SmallChange="0.01" Value="2" ValueChanged="PauseToClickTime_ValueChanged" Minimum="0.3"/>
-            <Label Content="Pause-To-Click Time Required" Margin="10,81,117.5,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtTimeRequired" Height="23" Margin="0,81,20.5,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="2" FontSize="15" TextAlignment="Right" HorizontalAlignment="Right" Width="77" KeyDown="txtTimeRequired_KeyDown"/>
-            <TextBox x:Name="txtMouseSensitivity" Height="23" Margin="0,12,20.5,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="3.5" FontSize="15" TextAlignment="Right" HorizontalAlignment="Right" Width="77"/>
-            <Slider x:Name="PauseThresold" Margin="10,182,9.5,0" VerticalAlignment="Top" Height="26" Maximum="160" SmallChange="0.01" Value="60" ValueChanged="PauseThresold_ValueChanged" Minimum="10"/>
-            <Label Content="Pause Movement Thresold" Margin="10,152,117.5,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtPauseThresold" Height="23" Margin="0,152,20.5,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="60" FontSize="15" TextAlignment="Right" HorizontalAlignment="Right" Width="77" KeyDown="txtPauseThresold_KeyDown"/>
-            <Button x:Name="btnDefault" Content="Default" HorizontalAlignment="Right" Margin="0,323,15.5,0" Width="74" Click="btnDefault_Click" Height="24" VerticalAlignment="Top"/>
-            <CheckBox x:Name="chkNoClick" Content="No clicks, move cursor only" HorizontalAlignment="Left" Margin="260,295,0,0" Height="16" VerticalAlignment="Top" Checked="chkNoClick_Checked" Unchecked="chkNoClick_Unchecked"/>
-            <RadioButton x:Name="rdiGrip" Content="Grip Gesture" HorizontalAlignment="Left" Margin="18,297,0,0" VerticalAlignment="Top" GroupName="GestureMode" Checked="rdiGrip_Checked"/>
-            <RadioButton x:Name="rdiPause" Content="Pause To Click" HorizontalAlignment="Left" Margin="134,297,0,0" VerticalAlignment="Top" GroupName="GestureMode" Checked="rdiPause_Checked"/>
-            <Slider x:Name="CursorSmoothing" Margin="10,253,9.5,0" VerticalAlignment="Top" Height="26" Maximum="0.95" SmallChange="0.01" Value="0.2" ValueChanged="CursorSmoothing_ValueChanged"/>
-            <Label Content="Cursor Smoothing" Margin="10,223,117.5,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtCursorSmoothing" Height="23" Margin="0,223,20.5,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="0.2" FontSize="15" TextAlignment="Right" HorizontalAlignment="Right" Width="77" KeyDown="txtPauseThresold_KeyDown"/>
-            <Label Content="" HorizontalAlignment="Left" Margin="10,323,0,0" VerticalAlignment="Top"/>
-
-        </Grid>
-
+        <Grid.RowDefinitions>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>
+        <TabControl x:Name="tabControl" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="363" VerticalAlignment="Top" Width="452" Grid.RowSpan="2" SelectionChanged="tabControl_SelectionChanged">
+            <TabItem Header="Settings">
+                <Grid Background="#FFFFFFFF" HorizontalAlignment="Right" Width="446">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="44*"/>
+                        <ColumnDefinition Width="179*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="UAH_blue_png" Source="UAH_blue.png" Stretch="Fill" Margin="0,249,276,-4" Grid.ColumnSpan="2"/>
+                    <Slider x:Name="MouseSensitivity" Margin="19,38,10,0" VerticalAlignment="Top" Height="24" Maximum="6" ValueChanged="MouseSensitivity_ValueChanged" Minimum="1" Value="3.5" Grid.ColumnSpan="2"/>
+                    <Label Content="Mouse Sensitivity" Margin="19,10,114,0" VerticalAlignment="Top" Height="25" Grid.ColumnSpan="2"/>
+                    <Slider x:Name="PauseToClickTime" Margin="19,104,10,0" VerticalAlignment="Top" Height="25" Maximum="5" SmallChange="0.01" Value="2" ValueChanged="PauseToClickTime_ValueChanged" Minimum="0.3" Grid.ColumnSpan="2"/>
+                    <Label Content="Pause-To-Click Time Required" Margin="19,76,114,0" VerticalAlignment="Top" Height="24" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txtTimeRequired" Height="22" Margin="0,76,17,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="2" FontSize="15" TextAlignment="Right" HorizontalAlignment="Right" Width="78" KeyDown="txtTimeRequired_KeyDown" Grid.Column="1"/>
+                    <TextBox x:Name="txtMouseSensitivity" Height="22" Margin="0,12,17,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="3.5" FontSize="15" TextAlignment="Right" HorizontalAlignment="Right" Width="78" Grid.Column="1"/>
+                    <Slider x:Name="PauseThresold" Margin="19,169,10,0" VerticalAlignment="Top" Height="25" Maximum="160" SmallChange="0.01" Value="60" ValueChanged="PauseThresold_ValueChanged" Minimum="10" Grid.ColumnSpan="2"/>
+                    <Label Content="Pause Movement Thresold" Margin="19,142,114,0" VerticalAlignment="Top" Height="24" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txtPauseThresold" Height="21" Margin="0,142,17,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="60" FontSize="15" TextAlignment="Right" HorizontalAlignment="Right" Width="78" KeyDown="txtPauseThresold_KeyDown" Grid.Column="1"/>
+                    <Button x:Name="btnDefault" Content="Default" HorizontalAlignment="Right" Margin="0,292,17,0" Width="75" Click="btnDefault_Click" Height="23" VerticalAlignment="Top" Grid.Column="1"/>
+                    <CheckBox x:Name="chkNoClick" Content="No clicks, move cursor only" HorizontalAlignment="Left" Margin="87,265,0,0" Height="14" VerticalAlignment="Top" Checked="chkNoClick_Checked" Unchecked="chkNoClick_Unchecked" Width="164" Grid.Column="1"/>
+                    <RadioButton x:Name="rdiGrip" Content="Grip Gesture" HorizontalAlignment="Left" Margin="87,302,0,0" VerticalAlignment="Top" GroupName="GestureMode" Checked="rdiGrip_Checked" Height="15" Width="86" Grid.Column="1"/>
+                    <RadioButton x:Name="rdiPause" Content="Pause To Click" HorizontalAlignment="Left" Margin="87,284,0,0" VerticalAlignment="Top" GroupName="GestureMode" Checked="rdiPause_Checked" Height="13" Width="93" Grid.Column="1"/>
+                    <Slider x:Name="CursorSmoothing" Margin="19,236,10,0" VerticalAlignment="Top" Height="24" Maximum="0.95" SmallChange="0.01" Value="0.2" ValueChanged="CursorSmoothing_ValueChanged" Grid.ColumnSpan="2"/>
+                    <Label Content="Cursor Smoothing" Margin="19,208,114,0" VerticalAlignment="Top" Height="24" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txtCursorSmoothing" Height="22" Margin="0,208,17,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="0.2" FontSize="15" TextAlignment="Right" HorizontalAlignment="Right" Width="78" KeyDown="txtPauseThresold_KeyDown" Grid.Column="1"/>
+                    <Label Content="" HorizontalAlignment="Left" Margin="10,301,0,0" VerticalAlignment="Top" Height="24" Width="10"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Debug">
+                <Grid Background="White" HorizontalAlignment="Right" Width="446">
+                    <Label x:Name="Right" Content="Right Hand&#xD;&#xA;" HorizontalAlignment="Left" Margin="67,10,0,0" VerticalAlignment="Top" Width="84"/>
+                    <Label x:Name="Left" Content="Left Hand" HorizontalAlignment="Left" Margin="156,10,0,0" VerticalAlignment="Top" Width="84"/>
+                    <Label x:Name="X_val" Content="X Values" HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top" Width="57" Height="29"/>
+                    <Label x:Name="Y_val" Content="Y Values" HorizontalAlignment="Left" Margin="10,91,0,0" VerticalAlignment="Top" Width="57" Height="29"/>
+                    <Label x:Name="Z_val" Content="Z Values" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" Width="57" Height="29"/>
+                    <TextBox x:Name="rx_val" HorizontalAlignment="Left" Height="29" Margin="72,57,0,0" TextWrapping="Wrap" Text="RIght X" VerticalAlignment="Top" Width="79" TextChanged="rx_val_TextChanged"/>
+                    <TextBox x:Name="ry_val" HorizontalAlignment="Left" Height="29" Margin="72,91,0,0" TextWrapping="Wrap" Text="Right Y" VerticalAlignment="Top" Width="79" TextChanged="ry_val_TextChanged"/>
+                    <TextBox x:Name="rz_val" HorizontalAlignment="Left" Height="29" Margin="72,125,0,0" TextWrapping="Wrap" Text="Right Z" VerticalAlignment="Top" Width="79" TextChanged="rz_val_TextChanged"/>
+                    <TextBox x:Name="lx_val" HorizontalAlignment="Left" Height="29" Margin="156,57,0,0" TextWrapping="Wrap" Text="Left X" VerticalAlignment="Top" Width="84" TextChanged="lx_val_TextChanged"/>
+                    <TextBox x:Name="ly_val" HorizontalAlignment="Left" Height="29" Margin="156,91,0,0" TextWrapping="Wrap" Text="Left Y" VerticalAlignment="Top" Width="84" TextChanged="ly_val_TextChanged"/>
+                    <TextBox x:Name="lz_val" HorizontalAlignment="Left" Height="29" Margin="156,125,0,0" TextWrapping="Wrap" Text="Left Z" VerticalAlignment="Top" Width="84" TextChanged="lz_val_TextChanged"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

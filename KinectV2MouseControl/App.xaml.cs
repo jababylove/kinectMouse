@@ -8,9 +8,6 @@ using System.Windows;
 
 namespace KinectV2MouseControl
 {
-    /// <summary>
-    /// App.xaml 的交互逻辑
-    /// </summary>
     public partial class App : Application
     {
     }

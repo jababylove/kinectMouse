@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Input;
 
 namespace KinectV2MouseControl
@@ -10,8 +11,32 @@ namespace KinectV2MouseControl
         public MainWindow()
         {
             InitializeComponent();
+            rfsh_lbl_timer();
         }
-        
+
+        private void refresh_lbls(object sender, EventArgs e)
+        {/*
+            rix_val.Text = kinectCtrl.right_x.ToString("f2");
+            lex_val.Text = kinectCtrl.left_x.ToString("f2");
+            mox_val.Text = kinectCtrl.cursor_x.ToString("f2");
+            spx_val.Text = kinectCtrl.spine_x.ToString("f2");
+            scx_val.Text = kinectCtrl.screenHeight.ToString("f2");
+            riy_val.Text = kinectCtrl.right_y.ToString("f2");
+            ley_val.Text = kinectCtrl.left_y.ToString("f2");
+            moy_val.Text = kinectCtrl.cursor_y.ToString("f2");
+            spy_val.Text = kinectCtrl.spine_y.ToString("f2");
+            scy_val.Text = kinectCtrl.screenWidth.ToString("f2");
+            riz_val.Text = kinectCtrl.right_z.ToString("f2");
+            lez_val.Text = kinectCtrl.left_z.ToString("f2");
+            spz_val.Text = kinectCtrl.spine_z.ToString("f2");*/
+        }
+        private void rfsh_lbl_timer()
+        {/*
+            refresh_tmr.Tick += new EventHandler(refresh_lbls);
+            refresh_tmr.Interval = (1) * (500); //this value is 1/2 a second
+            refresh_tmr.Start();*/
+        }
+
         private void MouseSensitivity_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (MouseSensitivity.IsLoaded)
@@ -164,6 +189,60 @@ namespace KinectV2MouseControl
 
                 Properties.Settings.Default.CursorSmoothing = kinectCtrl.cursorSmoothing;
                 Properties.Settings.Default.Save();
+            }
+        }
+
+        private void tabControl_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
+        }
+
+        // The following changes the values in the gui under the debug tab of the Kinect reading the values of the hands
+        private void rx_val_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            if(rx_val.IsLoaded)
+            {
+                rx_val.Text = kinectCtrl.right_x.ToString("f2");
+            }
+        }
+
+        private void ry_val_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            if (ry_val.IsLoaded)
+            {
+                ry_val.Text = kinectCtrl.right_y.ToString("f2");
+            }
+        }
+
+        private void rz_val_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            if (rz_val.IsLoaded)
+            {
+                rz_val.Text = kinectCtrl.right_z.ToString("f2");
+            }
+        }
+
+        private void lx_val_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            if (lx_val.IsLoaded)
+            {
+                lx_val.Text = kinectCtrl.left_x.ToString("f2");
+            }
+        }
+
+        private void ly_val_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            if (ly_val.IsLoaded)
+            {
+                ly_val.Text = kinectCtrl.left_y.ToString("f2");
+            }
+        }
+
+        private void lz_val_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            if (lz_val.IsLoaded)
+            {
+                lz_val.Text = kinectCtrl.left_z.ToString("f2");
             }
         }
     }
